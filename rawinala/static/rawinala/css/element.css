@@ -1,0 +1,35 @@
+.text-white {
+    color: white;
+}
+
+.text-grey {
+    color: #BDBDBD; /* not actually grey.. */
+}
+
+.text-dark {
+    color: #616161 !important;
+}
+
+.letter-spaced {
+    letter-spacing: 6px;
+}
+
+.header-image {
+    background-image: url('/static/rawinala/images/rawinala_front_bw.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.ribbon {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #006064;
+}
+
+.form-center {
+    max-width: 500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+migrations
+tmp
+.ftpquota
+rawinala_project/secrets.py
+media
+/static
+static/admin
+static/ckeditor

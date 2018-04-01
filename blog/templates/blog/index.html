@@ -1,0 +1,51 @@
+{% extends 'rawinala/base.html' %}
+{% load staticfiles %}
+
+{% block title_b %}Blog{% endblock %}
+{% block body_b %}
+    <div class="container py-5">
+        {% if user.is_authenticated %}
+            <a href="{% url 'admin:blog_article_add' %}" class="btn btn-primary mb-3">Buat artikel baru</a>
+        {% endif %}
+        {% if art_list %}
+            {% for art in arts %}
+            <article class="pb-3">
+                <div class="article-list-title">
+                    <header>
+                        <h4><a href="{{art.get_absolute_url}}">{{art.title}}</a></h4>
+                    </header>
+                </div>
+                <section class="content-preview">
+                    {{art.content|striptags|truncatechars:500}}
+                </section>
+                <div class="article-list-detail mb-1">
+                    <footer>
+                        <span>
+                            <img src="{% static 'blog/images/icons/person.svg' %}" title="author" alt="author"><small> {{art.author}}</small>
+                            <img src="{% static 'blog/images/icons/calendar.svg' %}" title="time" alt="time"><small> {{art.time_created|date:"d M Y, H:i"}}</small>
+                            <img src="{% static 'blog/images/icons/eye.svg' %}" title="views" alt="views"><small> {{art.views}}</small>
+                        </span>
+                    </footer>
+                </div>
+            </article>
+            {% endfor %}
+            <div class="pagination py-3">
+                <span class="step-links">
+                    {% if arts.has_previous %}
+                        <a href="?page={{ contacts.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ arts.number }} of {{ arts.paginator.num_pages }}
+                    </span>
+            
+                    {% if arts.has_next %}
+                        <a href="?page={{ contacts.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% else %}
+            <p>Tidak ada artikel untuk ditampilkan.</p>
+        {% endif %}
+    </div>
+{% endblock %}

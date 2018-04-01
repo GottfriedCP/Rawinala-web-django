@@ -1,0 +1,23 @@
+{% extends 'rawinala/base.html' %}
+{% load staticfiles %}
+
+{% block title_b %}Login{% endblock %}
+{% block body_b %}
+    <div class="container pt-5 pb-5">
+        <form method="post" action="{% url 'rawinala:login' %}" class="form-center mb-5">
+            {% csrf_token %}
+            <div class="text-center mb-3">
+                <img src="{% static 'rawinala/images/logo.png' %}" width="96px" height="96px">
+                <h3>Silakan login</h3>
+            </div>
+    
+            <label for="username-input" class="sr-only">Username</label>
+            <input type="text" name="username" class="form-control form-control-lg" id="username-input" placeholder="Username" required autofocus>
+    
+            <label for="password-input" class="sr-only">Password</label>
+            <input type="password" name="password" class="form-control form-control-lg" id="password-input" placeholder="Password" required>
+    
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">Login</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'rawinala/base.html' %}
+{% load staticfiles %}
+
+{% block html_header_b %}
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="{% static 'blog/css/article.css' %}" rel="stylesheet">
+    <meta name="description" content="{{art.content|striptags|truncatechars:500}}" />
+
+    <!-- markup Schema.org untuk Google+ -->
+    <meta itemprop="name" content="{{art.title}}">
+    <meta itemprop="description" content="{{art.content|striptags|truncatechars:500}}">
+    <meta itemprop="image" content="https://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}">
+
+    <!-- basic Twitter Card -->
+    <meta name="twitter:card" content="summary">
+        
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{art.title}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.rawinala.org{{art.get_absolute_url}}" />
+    <meta property="og:image" content="https://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}" />
+    <meta property="og:description" content="{{art.content|striptags|truncatechars:500}}" />
+    <meta property="og:site_name" content="Rawinala" />
+    <meta property="article:published_time" content="{{art.time_created|date:'c'}}" />
+    <meta property="article:modified_time" content="{{art.time_modified|date:'c'}}" />
+{% endblock %}
+{% block title_b %}{{art.title}}{% endblock %}
+{% block body_b %}
+    <div class="container py-5">
+        <article>
+            <div id="article-title">
+                <header>
+                    <h1>{{art.title}}</h1>
+                </header>
+            </div>
+            <div class="pb-2" id="article-body">
+                <section class="main-content">
+                    {{art.content|safe}}
+                </section>
+            </div>
+            <div class="mb-3" id="article-detail">
+                <footer>
+                    <div>
+                        <img src="{% static 'blog/images/icons/person.svg' %}" title="author" alt="author"><small> {{art.author}}</small>
+                        <img src="{% static 'blog/images/icons/calendar.svg' %}" title="time" alt="time"><small><time datetime="{{art.time_created|date:'c'}}"> {{art.time_created|date:"d M Y, H:i"}}</time></small>
+                        <img src="{% static 'blog/images/icons/eye.svg' %}" title="views" alt="views"><small> {{art.views}}</small>
+                    </div>
+                    <div>
+                        {% for tag in tags %}<span class="badge badge-pill badge-info mr-2">{{tag.name}}</span>{% endfor %}
+                    </div>
+                </footer>
+            </div>
+            <div class="container">
+                <section class="social-media-share">
+                    Sharethis not yet loaded.
+                </section>
+            </div>
+    
+            {% if user.is_authenticated %}
+            <div class="py-2" id="admin-menu">
+                <section class="admin-menu">
+                    <span>
+                        <a href="{% url 'admin:blog_article_change' art.id %}" class="btn btn-sm btn-info" role="button">Edit or delete this article</a>
+                    </span>
+                </section>
+            </div>
+            {% endif %}
+    
+            {% if not debug %}
+            <div class="p-2" id="comments">
+                <section class="comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://www.rawinala.org{{art.get_absolute_url}}'; 
+                            this.page.identifier = '{{art.uuid}}';
+                            this.page.title = '{{art.title}}'
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://rawinala.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </section>
+            </div>
+            {% else %}
+                Disqus should load here when not debug.
+            {% endif %}
+        </article>
+    </div>
+{% endblock %}
