@@ -17,9 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+import rawinala_project.secrets as secret
 
 urlpatterns = [
-    url(r'^django-admin/', admin.site.urls),
+    url(secret.admin_url, admin.site.urls),
     url(r'^blog/', include('blog.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),

@@ -24,9 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = secret.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '.rawinala.org']
+# DO NOT add localhost when deploy
+ALLOWED_HOSTS = ['.rawinala.org', ]
 
 
 # Application definition
@@ -133,12 +134,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR, ]
-#STATIC_ROOT = STATIC_DIR
+STATIC_ROOT = '/home/rawinala/public_html/static'
 
 # Media files
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/' # change this to absolute
+MEDIA_URL = 'https://www.rawinala.org/media/' # change this to absolute or URL
 
 # Django ckeditor
 #CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'

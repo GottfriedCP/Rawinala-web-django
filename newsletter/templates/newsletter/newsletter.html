@@ -12,7 +12,9 @@
 <body>
     <section id="newsletter" style="padding: 10px 15px;">
         <header id="header" style="padding-left: 10px;">
-            <img src="http://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}" style="max-width: 480px; height: auto;">
+            <p style="text-align: center;">
+                <img src="http://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}" style="max-width: 480px; height: auto;">
+            </p>
             <h1><em>Edisi <time datetime="{{edition|date:'c'}}">{{edition|date:"M Y"}}</time></em></h1>
         </header>
         <section class="newsletter-content" id="body" style="font-family: 'Cabin', sans-serif; padding:10px 5px;">
