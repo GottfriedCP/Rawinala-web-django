@@ -20,9 +20,9 @@ class Subscriber(models.Model):
             super(Subscriber, self).save()
 
 class Newsletter(models.Model):
-    time = models.DateTimeField(auto_now_add=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '%s %s' % (self.time__month, self.time__year)
+        return '%s %s' % (self.created_at.month, self.created_at.year)
