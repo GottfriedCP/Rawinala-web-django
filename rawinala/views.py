@@ -62,12 +62,10 @@ def contact(request):
                 # Save message to database
                 m = Message(name=name, email=email, content=message.strip())
                 m.save()
-
-                # Send email to admins
+                # Send email to admins (using SMTP)
                 subject = 'Message from %s' % (name)
                 sender = '%s (via Rawinala.org)' % (name)
-                message = 'Name: %s\nPlease reply to this email: %s\n\n%s' % (name, email, message)
-                sender_email = '%s <%s>' % (sender, email)
+                message = 'Name: %s\nPlease reply to this address: %s\n\n%s' % (name, email, message)
                 sender_email = 'Rawinala.org <%s>' % (secret.EMAIL_HOST_USER)
                 recipients = secret.recipients
                 send_mail(subject, message, sender_email, recipients)
