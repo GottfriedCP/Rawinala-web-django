@@ -1,6 +1,10 @@
 {% extends 'rawinala/base.html' %}
 {% load staticfiles %}
 
+{% block html_header_b %}
+    <!-- Sharethis -->
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5ac45ae81243c10013440ce2&product=inline-share-buttons"></script>
+{% endblock %}
 {% block title_b %}Blog{% endblock %}
 {% block body_b %}
     <div class="container py-5">
