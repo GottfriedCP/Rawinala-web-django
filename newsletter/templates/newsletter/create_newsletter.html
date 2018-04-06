@@ -1,17 +1,17 @@
 {% extends 'rawinala/base.html' %}
 {% load staticfiles %}
 
-{% block title_b %}Buat newsletter{% endblock %}
+{% block title_b %}Publish newsletter{% endblock %}
 {% block body_b %}
     <section id="create-newsletter">
         <div class="container">
-            <h1>Buat newsletter baru</h1>
+            <h1>Create a newsletter</h1>
             <form method="post" action="{% url 'newsletter:publish' %}">
                 {% csrf_token %}
-                <h3>Edisi: {{edition|date:'M Y'}}</h3>
+                <h3>Edition: {{edition|date:'M Y'}}</h3>
 
                 <div class="form-group">
-                    <small class="form-text">Header dan footer newsletter akan ditambahkan secara otomatis.</small>
+                    <small class="form-text"><em>Note:</em> header and footer will be added automatically.</small>
                     {{ content_form }}
                 </div>
                 
