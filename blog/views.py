@@ -19,7 +19,6 @@ def home(request):
         arts = paginator.page(paginator.num_pages)
 
     context = {
-        'art_list': art_list, # Used for checking only, may be revised later
         'arts': arts,
     }
     return render(request, 'blog/index.html', context)

@@ -85,7 +85,7 @@ def message(request):
     
     # Query all visitor messages
     visitor_message_list = Message.objects.order_by('-time')
-    # using paginator to list 50
+    # using paginator to list 50 per page
     paginator = Paginator(visitor_message_list, 50, orphans=5)
     page = request.GET.get('page')
     try:
@@ -98,7 +98,7 @@ def message(request):
         visitor_messages = paginator.page(paginator.num_pages)
 
     context = {
-        'visitor_messages': visitor_messages
+        'visitor_messages': visitor_messages,
     }
     return render(request, 'rawinala/message_list.html', context)
 

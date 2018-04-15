@@ -7,7 +7,7 @@
         <div class="container">
             <h3>Guest messages</h3>
             <small><b>Note:</b> all messages listed here have been forwarded to admin.</small>
-            {% if visitor_messages %}
+            {% if visitor_messages.paginator.count > 0 %}
                 <div class="table-responsive">
                     <table class="table table-hover table-sm">
                         <thead>
