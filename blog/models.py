@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core import urlresolvers
+from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -45,4 +45,4 @@ class Article(models.Model):
 
     def get_admin_url(self):
         content_type = ContentType.objects.get_for_model(self.__class__)
-        return urlresolvers.reverse("admin:%s_%s_change" % (content_type.app_label, content_type.model), args=(self.id,))
+        return reverse("admin:%s_%s_change" % (content_type.app_label, content_type.model), args=(self.id,))
