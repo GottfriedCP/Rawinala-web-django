@@ -25,10 +25,10 @@ def create(request):
                     body=render_to_string('newsletter/newsletter.html', {
                         'title': title,
                         'date_created': date_created,
-                        'content': content.replace('src="/', f'src="http://{request.get_host()}/'),
+                        'content': content,
                         'hostname': request.get_host(),
                         'unsubs_path': subsr.get_unsubscribe_path(),
-                    }),
+                    }).replace('src="/', f'src="http://{request.get_host()}/'),
                     from_email=f'Rawinala.org <{settings.EMAIL_HOST_USER}>',
                     to=[subsr.email],
                 )
