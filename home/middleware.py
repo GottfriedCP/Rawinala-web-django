@@ -32,7 +32,8 @@ class DefaultLanguageMiddleware:
         # Set default language to Indonesian
         if request.session.get('language') is None:
             # Get location based on IP address
-            ip = request.META['REMOTE_ADDR']
+            ip = request.META.get('HTTP_X_FORWARDED_FOR', '') or request.META.get('REMOTE_ADDR')
+            print(f'Detected ip is {ip}')
             ipstack_apikey = settings.IPSTACK_APIKEY
             ipstack = f'http://api.ipstack.com/{ip}?access_key={ipstack_apikey}'
 
