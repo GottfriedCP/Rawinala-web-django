@@ -15,7 +15,6 @@ def create(request):
             title = None if form.cleaned_data['title'] == '' else form.cleaned_data['title']
             date_created = form.cleaned_data['date_created']
             content = form.cleaned_data['content']
-            content = content.replace('src="/', f'src="http://{request.get_host()}/')
             content = content.replace('href="/', f'href="http://{request.get_host()}/')
 
             subsrs = Subsr.objects.all()
@@ -26,7 +25,7 @@ def create(request):
                     body=render_to_string('newsletter/newsletter.html', {
                         'title': title,
                         'date_created': date_created,
-                        'content': content,
+                        'content': content.replace('src="/', f'src="http://{request.get_host()}/'),
                         'hostname': request.get_host(),
                         'unsubs_path': subsr.get_unsubscribe_path(),
                     }),
