@@ -1,0 +1,53 @@
+{% extends 'base_en.html' %}
+{% load staticfiles %}
+
+{% block title_b %}Donation{% endblock %}
+{% block body_b %}
+    <section id="service">
+        <div class="text-center">
+            <h3 class="letter-spaced">SERVICE</h3>
+        </div>
+        <div class="container text-dark">
+            <p>You can be involved in Rawinala's services through the following programs:</p>
+            <ul>
+                <li>
+                    <strong>Foster Parents Program (Schools and Dormitories).</strong> Most of Rawinala's children come from families with weak economies. They need your helping hand to continue to school and get quality care.</li>
+                <li>
+                    <strong>Education and Care Worker Welfare.</strong> Educators and caregivers are the main force in all Rawinala's activities. You can help to improve their welfare through this program.</li>
+                <li>
+                    <strong>Teacher Training at the Training Center.</strong> Through this program, you can help children with multiple disabilities in the supported regions to be able to access education.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="financial">
+        <div class="text-center">
+            <h3 class="letter-spaced">DONATION</h3>
+        </div>
+        <div class="container text-dark">
+            <p>As a private social institution, Rawinala has many challenges to achieve its goals. The main challenge is in the area of funding. For more than 40 years of service, Rawinala has never had a permanent funder. Rawinala must fight from month to month to make ends meet.</p>
+            <p>We accept donations through bank accounts (Mandiri and BCA) and PayPal (for credit cards)</p>
+            <ul>
+                <li><strong>Bank Mandiri</strong> KCP RS. Thamrin
+                    <br>129.000.128.1449</li>
+                <li><strong>BCA</strong> KCP Rawamangun
+                    <br>094.300.2689</li>
+                <li>via <strong>Paypal</strong>:
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="pt-3">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="LQUMJYT8V7F5L">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+            <p>Feel free to <a href="{% url 'home:about' %}#contact-us">contact us</a> for donation confirmation or if you need any further information.</p>
+        </div>
+    </section>
+
+    <section class="ribbon" id="nb">
+        <div class="container text-grey">
+            <p class="lead mb-0">We thank all those who have helped, both morally, spiritually, and physically. And we hope that there will be more parties who can help so that the people with multiple disabilities and visual impairments, especially in Indonesia, can live a good and meaningful lives, according to their potential.</p>
+        </div>
+    </section>
+{% endblock %}

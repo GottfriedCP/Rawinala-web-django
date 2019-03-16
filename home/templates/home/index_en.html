@@ -1,0 +1,196 @@
+{% extends 'base_en.html' %}
+{% load staticfiles %}
+
+{% block header_b %}
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <meta name="description" content="Yayasan Pendidikan Dwituna Rawinala is an institution that caters to the educational needs of people with multiple disabilities and visual impairments. Persons with those conditions are hard to get education services, even at special schools.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rawinala" />
+    <meta property="og:description" content="Yayasan Pendidikan Dwituna Rawinala is an institution that caters to the educational needs of people with multiple disabilities and visual impairments. Persons with those conditions are hard to get education services in Indonesia, even at special schools.">
+    <meta property="og:url" content="https://www.rawinala.org" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.rawinala.org{% static 'newsletter/img/nl_header.png' %}" />
+{% endblock %}
+{% block title_b %}Home{% endblock %}
+{% block body_b %}
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid header-image text-center text-white">
+        <div class="container">
+            <h3 class="jumbotron-heading letter-spaced" style="text-shadow: -1px 0 #9E9E9E, 0 1px #9E9E9E, 1px 0 #9E9E9E, 0 -1px #9E9E9E;">
+                <strong>WELCOME TO RAWINALA</strong>
+            </h3>
+            <p class="lead">We are an institution that caters to the educational needs of people with multiple disabilities and visual impairments. Persons with those conditions are hard to get education services in Indonesia, even at special schools.</p>
+        </div>
+    </div>
+    <!-- END Jumbotron -->
+
+    <section id="education">
+        <div class="text-center">
+            <h3 class="letter-spaced">EDUCATION</h3>
+            <p class="text-dark">
+                <em>for students aged 0&ndash;20 years with multiple disabilities</em>
+            </p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/1.JPG' %}" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">EARLY EDUCATION</h6>
+                            <p class="card-text text-dark">An education program for children aged 0&ndash;6 years. Their initial potential begins to be observed, explored, and developed through programs tailored to the needs and abilities of the children.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/2.JPG' %}" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">BASIC EDUCATION</h6>
+                            <p class="card-text text-dark">This program is designed from four main functional education areas: to live, to work, to play, and to love. Children are directed to develop their potential and to explore other abilities that can support their independence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/3.JPG' %}" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">ADVANCED EDUCATION</h6>
+                            <p class="card-text text-dark">Further education programs for children aged 14&ndash;18 years to develop work skills according to their needs and abilities. The goal is not only to earn income, but also so that children are able to do various simple jobs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nurture">
+        <div class="text-center">
+            <h3 class="letter-spaced">CARE</h3>
+            <p class="text-dark">
+                <em>for people with mental disabilities, who for some reason, cannot live with their family</em>
+            </p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/4.JPG' %}" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">REFORMATORY</h6>
+                            <p class="card-text text-dark">Provided for school-age children who meet certain categories.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/5.JPG' %}" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">NURSING</h6>
+                            <p class="card-text text-dark">We provide a place of residence for elderly people with multiple disabilities who no longer have family. Each dormitory has a role in daily housework and is assisted by several assistants who work together to build a functional and happy residential environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="photo-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/6.JPG' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/7.JPG' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/8.JPG' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'home/img/9.JPG' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="society">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">SHELTERED WORKSHOP</h6>
+                            <p class="card-text text-dark">Workshops for the children who have completed further education. Those who are included in the train-able category will be given skills that suit their abilities, so that they can have income to meet their daily needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">COMMUNITY-EMPOWERED REHABILITATION</h6>
+                            <p class="card-text text-dark">We also serves persons with disabilities outside our institution by empowering communities, other institutions, and the government locally, regionally and nationally.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-center letter-spaced">TRAINING CENTER</h6>
+                            <p class="card-text text-dark">The aim of this program is to encourage and train educational institutions, both public and private, to open similar services. The targets of this program are teachers, social workers, families, communities, and the government.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="latest-news">
+        <div class="container">
+            <div>
+                <h3>Latest Articles</h3>
+            </div>
+            {% if recent_arts %}
+                {% for art in recent_arts %}
+                    <div class="container article-preview">
+                        <a href="{{ art.get_absolute_url }}">
+                            <h4>{{art.title}}</h4>
+                        </a>
+                        <div class="article-preview-body">
+                            <p>{{art.content|striptags|truncatechars:300}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>...</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="newsletter-subscription" class="ribbon">
+        <div class="container">
+            <h3 class="text-white">Subscribe to Our Newsletter "Sapa Sahabat Rawinala"</h3>
+            <form method="POST" action="{% url 'newsletter:subscribe' %}" class="form-inline">
+                {% csrf_token %}
+                <label for="email-input" class="sr-only">Email</label>
+                <input type="email" name="email" id="email-input" placeholder="email@example.com" class="form-control mr-2">
+
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    <!-- newsletter subscription status -->
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{ message }}'); </script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

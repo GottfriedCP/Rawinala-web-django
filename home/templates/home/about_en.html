@@ -1,0 +1,188 @@
+{% extends 'base_en.html' %}
+{% load staticfiles %}
+
+{% block title_b %}About Us{% endblock %}
+{% block body_b %}
+    <section id="background">
+        <div class="text-center">
+            <h3 class="letter-spaced">BACKGROUND</h3>
+        </div>
+        <div class="container text-dark">
+            <p>Encouraged by the need and awareness of the importance of education for people with multiple disabilities and visual impairments, in 1973 the Dwituna Education Foundation Rawinala was formed by several Javanese Christian Church activists. Realizing that physical and mental disabilities are universal problems, Rawinala opens opportunities for anyone, regardless of the background and social status.<br>
+            <br> In ancient Javanese, Rawinala means 
+            <strong>Light of the Heart</strong>; it means that those who cannot see can still "see" through their other senses: their heart and soul.</p>
+        </div>
+    </section>
+
+    <section id="vision-mission" class="text-center">
+        <div>
+            <h3 class="letter-spaced">VISION & MISSION</h3>
+        </div>
+        <div class="container text-dark">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="letter-spaced">VISION</h6>
+                    <p>To become a comprehensive service center for people with multiple disabilities and visual impairments in Indonesia</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="letter-spaced">MISSION</h6>
+                    <p>Organizing quality education, care, and development for people with multiple disabilities and visual impairments through professionalism of institutions, facilities, and networks</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <h6 class="letter-spaced">MOTTO</h6>
+                <p>Give your heart and hands to serve</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="organization-structure">
+        <div class="text-center">
+            <h3 class="letter-spaced">ORGANIZATION STRUCTURE</h3>
+        </div>
+        <div class="container table-responsive">
+            <table class="table table-sm table-bordered table-hover mx-auto">
+                <caption>Period of 2016&ndash;2020</caption>
+                <tbody>
+                    <tr>
+                        <th>Advisor</th>
+                        <td>Pdt. Kadarmanto Hardjowasito</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Ny. Maryono Idris Sunarmo</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Ny. Moelarsih D. Purwanto</td>
+                    </tr>
+                    <tr>
+                        <th>Supervisor</th>
+                        <td>Gatot Pudjantojo</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Budi Sukamto</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Sri Udaneni</td>
+                    </tr>
+
+                    <tr class="table-secondary">
+                        <th colspan="2">Main Management</th>
+                    </tr>
+                    <tr>
+                        <th>Chairman</th>
+                        <td>Dwihardjo Sutarto</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Priyatmedi</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Endang Hoyaranda</td>
+                    </tr>
+                    <tr>
+                        <th>Secretary</th>
+                        <td>Mintardi</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Supriatmo</td>
+                    </tr>
+                    <tr>
+                        <th>Treasurer</th>
+                        <td>Dharmawati I. Basuki</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Maria Eti Martati</td>
+                    </tr>
+                    <tr>
+                        <th>Fundraising</th>
+                        <td>Andrew Suryadi</td>
+                    </tr>
+                    <tr>
+                        <th>Compliance and Cooperation</th>
+                        <td>Abimanyu Suharto</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Santo Hoyaranda</td>
+                    </tr>
+                    <tr>
+                        <th>Communication</th>
+                        <td>Titi Juliasih</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Sri Hariningsih</td>
+                    </tr>
+                    <tr>
+                        <th>Project and Maintenance</th>
+                        <td>Yacobus Manafe</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Satrio Wibowo</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>David Tirtonegoro</td>
+                    </tr>
+                    <tr>
+                        <th>Training Center</th>
+                        <td>Ruth Kadarmanto</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>Hesti Kusworini</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="contact-us">
+        <div class="text-center">
+            <h3 class="letter-spaced">CONTACT US</h3>
+        </div>
+        <div class="container">
+            <form class="form-center" method="POST" action="{% url 'home:about' %}">
+                {% csrf_token %}
+                <p>See also: <a href="{% url 'home:donation' %}">donation and participation information</a>.</p>
+                <div class="form-group">
+                    <label for="name-input">Name</label>
+                    <input type="text" name="name" class="form-control" id="name-input" maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-input">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="email@example.com" id="email-input" maxlength="100" required>
+                    <small class="form-text text-muted">We will never share your email.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message-input">Message</label>
+                    <textarea name="message" class="form-control" id="message-input" rows="10" maxlength="1000" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="captcha-input">Security question: {{ challenge }}</label>
+                    <input type="number" name="captcha-response" class="form-control" placeholder="{{ challenge }}" id="captcha-input" required>
+                    <small class="form-text text-muted">This is used to prevent spam and abuse.</small>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-primary">Send</button>
+            </form>
+        </div>
+    </section>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{ message }}'); </script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

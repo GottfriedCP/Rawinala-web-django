@@ -5,32 +5,55 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blog/css/article.css' %}">
+
+    <title>Sapa Sahabat Rawinala</title>
 </head>
 
 <body>
-    <section id="newsletter" style="padding: 10px 15px;">
-        <header id="header" style="padding-left: 10px;">
-            <p style="text-align: center;">
-                <img src="http://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}" style="max-width: 480px; height: auto;">
-            </p>
-            <h1><em>Edisi <time datetime="{{edition|date:'c'}}">{{edition|date:"M Y"}}</time></em></h1>
-        </header>
-        <section class="newsletter-content" id="body" style="font-family: 'Cabin', sans-serif; padding:10px 5px;">
-            {{content|safe}}
-        </section>
-        <section id="organization" style="text-align: center;">
-            <span>
-                <p><small>© Yayasan Pendidikan Dwituna Rawinala</small></p>
-                <p><small><a href="http://www.rawinala.org/newsletter/unsubscribex/%recipient.uuid%/?email=%recipient_email%">Unsubscribe</a></small></p>
-            </span>
-        </section>
-    </section>
+    <div class="container">
+        <img id="newsletter-header" src="{% static 'newsletter/img/nl_header.png' %}" style="display: block; margin-left: auto; margin-right: auto; height: auto; width: 100%;">
+        <div style="padding-top:1rem;padding-bottom:1rem;">
+            {% if title %}
+            <h3><strong>{{ title }}</strong></h3>
+            {% endif %}
+            <h5>{{ date_created|date:"d M Y" }}</h5>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="newsletter-content" style="padding-top:1rem;padding-bottom:2rem;">
+            {{ content|safe }}
+        </div>
+
+        <!-- Footer -->
+        <div style="padding-top:1rem;padding-bottom:2rem;">
+            <hr>
+            <p><strong>&copy; 2017 Yayasan Pendidikan Dwituna Rawinala </strong></p>
+            <p>Rekening:</p>
+            <ul>
+                <li>BCA: 094.300.2689</li>
+                <li>Bank Mandiri: 129.000.128.1449</li>
+            </ul>
+        </div>
+
+        <p style="text-align:center;">
+            <small>
+                <a href="http://{{ hostname }}{{ unsubs_path }}" target="_blank">Unsubscribe</a>
+            </small>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

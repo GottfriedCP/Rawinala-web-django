@@ -1,0 +1,191 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Icon-related -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicon/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'img/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}">
+    <meta name="apple-mobile-web-app-title" content="Rawinala">
+    <meta name="application-name" content="Rawinala">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/element.css' %}">
+    {% block header_b %}{% endblock %}
+    <title>{% block title_b %}{% endblock %} | Rawinala</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'img/logo.png' %}" width="32" height="32" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.session.current_page == 'home' %}active{% endif %}" href="{% url 'home:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.session.current_page == 'blog' %}active{% endif %}" href="{% url 'blog:index' %}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.session.current_page == 'donation' %}active{% endif %}" href="{% url 'home:donation' %}">Donation</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link {% if request.session.current_page == 'about' %}active{% endif %} dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown05">
+                        <a class="dropdown-item" href="{% url 'home:about' %}#background">Background</a>
+                        <a class="dropdown-item" href="{% url 'home:about' %}#vision-mission">Vision and Mission</a>
+                        <a class="dropdown-item" href="{% url 'home:about' %}#organization-structure">Organization Structure</a>
+                        <a class="dropdown-item" href="{% url 'home:about' %}#contact-us">Contact Us</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- Right-side nav -->
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <form class="form-inline mr-3" method="POST" action="{% url 'home:set_language' %}">
+                        {% csrf_token %}
+                        <input name="redirect_to" type="hidden" value="{{ request.get_full_path }}">
+                        <div class="form-group">
+                            <label for="languageSelect" class="pr-2" style="color:rgba(255,255,255,.5);">Language</label>
+                            <select name="language" class="form-control form-control-sm" onchange="this.form.submit()" id="languageSelect">
+                                <option value="id" {% if request.session.language == 'id' %}selected{% endif %}>ID</option>
+                                <option value="en" {% if request.session.language == 'en' %}selected{% endif %}>EN</option>
+                            </select>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    {% if not user.is_authenticated %}
+                    <a role="button" href="{% url 'home:login' %}" class="btn btn-outline-light btn-sm">Login</a>
+                    {% else  %}
+                    <a href="{% url 'newsletter:create' %}" class="badge badge-info mr-3" title="Create a newsletter"><img src="{% static 'newsletter/img/icons/document.svg' %}"></a>
+                    <a role="button" href="{% url 'admin:index' %}" class="btn btn-outline-light btn-sm mr-3">Administration</a>
+                    <a role="button" href="{% url 'home:logout' %}" class="btn btn-outline-light btn-sm">Logout</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block body_b %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer text-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 p-3">
+                            <address>
+                                <strong>Address</strong>
+                                <br> Jalan Inerbang 38, Kramat Jati
+                                <br> DKI Jakarta 13520
+                                <br> Indonesia
+                                <br>
+                            </address>
+                            <address>
+                                <strong>Contact</strong>
+                                <br> Email: office[at]rawinala.org
+                                <br> Phone: (62-21) 8090407 / 80886248
+                                <br> Fax: (62-21) 80886248
+                                <br>
+                            </address>
+                            <div id="social-media">
+                                <p>
+                                    <a href="https://www.facebook.com/Yayasan-Pendidikan-Dwituna-Rawinala-188650806928/">
+                                        <img src="{% static 'img/icons/f.png' %}" alt="facebook link" width="24px" height="24px">
+                                    </a>
+                                    <a href="https://twitter.com/YayasanRawinala">
+                                        <img src="{% static 'img/icons/t.png' %}" alt="twitter link" width="24px" height="24px">
+                                    </a>
+                                    <a href="https://www.youtube.com/user/rawinala?feature=watch">
+                                        <img src="{% static 'img/icons/y.png' %}" alt="youtube link" width="24px" height="24px">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-3">
+                            <address>
+                                <strong>Bank Account</strong>
+                                <br> BCA: 094.300.2689
+                                <br> Bank Mandiri: 129.000.128.1449
+                            </address>
+                            <address>
+                                <strong>Affiliation</strong>
+                                <br>
+                                <a href="https://www.cafamerica.org/" target="_blank">
+                                    <img src="{% static 'home/img/caf_logo.png' %}" alt="caf" height="32px" width="auto" class="mt-2">
+                                </a>
+                                <br>
+                                <a href="http://www.perkins.org/" target="_blank">
+                                    <img src="{% static 'home/img/perkins_logo.png' %}" alt="perkins" height="32px" width="auto" class="mt-2">
+                                </a>
+                                <br>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pt-3 pb-5 px-5">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <embed class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8622802140935!2d106.86097741422688!3d-6.28182926323701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f261653f1eed%3A0x61087e53cc0adefc!2sDwituna+Education+Foundation+Rawinala!5e0!3m2!1sen!2sid!4v1518408613271"
+                            allowfullscreen>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container p-3 text-center">
+            <small>&COPY; 2017 Yayasan Pendidikan Dwituna Rawinala
+                <br>Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+                <br>Icons courtesy of <a href="http://vervex.ca/">vervex.ca</a> | <a href="https://github.com/GottfriedCP/Rawinala-web-django">source code</a> by <a href="https://www.linkedin.com/in/gprasetyadi/">GP</a></small>
+        </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Optional JavaScript -->
+    {% block body_add_b %}
+    {% endblock %}
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Yayasan Pendidikan Dwituna Rawinala",
+        "legalName": "Yayasan Pendidikan Dwituna Rawinala",
+        "url": "https://www.rawinala.org/",
+        "logo": "https://www.rawinala.org{% static 'newsletter/images/nl_header.png' %}",
+        "sameAs": [
+            "https://www.facebook.com/Yayasan-Pendidikan-Dwituna-Rawinala-188650806928/",
+            "https://twitter.com/YayasanRawinala",
+            "https://www.youtube.com/user/rawinala?feature=watch"
+        ]
+    }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

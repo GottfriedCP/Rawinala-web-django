@@ -1,28 +1,24 @@
 from django.db import models
-from django.contrib.auth.models import User
-from ckeditor_uploader.fields import RichTextUploadingField
+from django.urls import reverse
+from django.utils import timezone
+import uuid
 
-# Create your models here.
-class Subscriber(models.Model):
-    email = models.EmailField(max_length=150, unique=True)
-    time_added = models.DateTimeField(auto_now_add=True, editable=False)
-    uuid = models.CharField(max_length=96, unique=True, null=True, editable=False)
+class Subsr(models.Model):
+    """Subscriber (subsr) model.\n\n
+    - id: subsr's id, also used for un-subscription\n
+    - email: subsr's email address\n
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.EmailField(unique=True)
+    date_joined = models.DateTimeField(auto_now_add=True, editable=False)
 
-    def __str__(self):
-        return self.email
+    class Meta:
+        ordering = ['-date_joined']
 
-    def save(self):
-        if self.uuid is None:
-            import datetime
-            import hashlib
-            seed = str(datetime.datetime.now()).encode('utf-8')
-            self.uuid = hashlib.sha384(seed).hexdigest()
-            super(Subscriber, self).save()
+    def get_unsubscribe_path(self):
+        return reverse('newsletter:unsubscribe', args=[self.id])
 
 class Newsletter(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    content = RichTextUploadingField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return '%s %s' % (self.created_at.year, self.created_at.month)
+    title = models.CharField(max_length=500, blank=True, null=True, default='')
+    date_created = models.DateTimeField(default=timezone.now, help_text='Newsletter edition (date), default is now.')
+    content = models.TextField()

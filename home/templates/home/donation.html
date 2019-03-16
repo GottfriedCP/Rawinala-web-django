@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_b %}Donasi{% endblock %}
+{% block body_b %}
+    <section id="service">
+        <div class="text-center">
+            <h3 class="letter-spaced">PELAYANAN</h3>
+        </div>
+        <div class="container text-dark">
+            <p>Anda dapat terlibat dalam pelayanan Rawinala melalui beberapa program di bawah ini:</p>
+            <ul>
+                <li>
+                    <strong>Program Orang Tua Asuh (Sekolah dan Asrama).</strong> Sebagian besar anak Rawinala berasal dari keluarga
+                    dengan ekonomi lemah. Mereka membutuhkan uluran tangan anda untuk dapat terus bersekolah dan mendapatkan
+                    pengasuhan yang berkualitas.</li>
+                <li>
+                    <strong>Kesejahteraan Tenaga Pendidikan & Pengasuhan.</strong> Tenaga pendidik dan pengasuh adalah motor dalam
+                    semua kegiatan Rawinala. Anda dapat membantu meningkatkan kesejahteraan mereka melalui program ini.</li>
+                <li>
+                    <strong>Pelatihan Guru di Training Center.</strong> Melalui program ini, anda dapat membantu anak berstatus tunaganda
+                    netra di daerah-daerah untuk dapat mengakses pendidikan.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="financial">
+        <div class="text-center">
+            <h3 class="letter-spaced">DONASI</h3>
+        </div>
+        <div class="container text-dark">
+            <p>Sebagai lembaga sosial swasta, Rawinala memiliki banyak tantangan untuk mencapai visi dan misi. Tantangan utama
+                adalah dalam bidang pendanaan. Selama 40 tahun lebih melayani, Rawinala tidak memiliki penyandang dana tetap.
+                Rawinala harus berjuang dari bulan ke bulan untuk mencukupi semua kebutuhan.</p>
+            <p>Kami menerima donasi melalui rekening bank (Mandiri dan BCA) dan PayPal (untuk kartu kredit)</p>
+            <ul>
+                <li><strong>Bank Mandiri</strong> KCP RS. Thamrin
+                    <br>129.000.128.1449</li>
+                <li><strong>BCA</strong> KCP Rawamangun
+                    <br>094.300.2689</li>
+                <li>via <strong>Paypal</strong>:
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="pt-3">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="LQUMJYT8V7F5L">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+            <p>Mohon <a href="{% url 'home:about' %}#contact-us">hubungi kami</a> untuk konfirmasi donasi atau jika membutuhkan informasi lainnya.</p>
+        </div>
+    </section>
+
+    <section class="ribbon" id="nb">
+        <div class="container text-grey">
+            <p class="lead mb-0">Kami bersyukur dan berterima kasih kepada semua pihak yang telah membantu, baik secara moral, spiritual,
+                maupun fisik. Dan kami berharap akan ada lebih banyak lagi pihak-pihak yang dapat membantu agar anak-anak
+                berstatus tunaganda netra di Indonesia dapat hidup berkualitas dan bermakna, sesuai dengan potensi mereka.</p>
+        </div>
+    </section>
+{% endblock %}

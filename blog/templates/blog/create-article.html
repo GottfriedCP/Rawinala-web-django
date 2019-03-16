@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header_b %}
+    <link rel="stylesheet" href="{% static 'blog/css/form.css' %}">
+{% endblock %}
+{% block title_b %}Create new article{% endblock %}
+{% block body_b %}
+    <div class="container py-3">
+        <h2>Tulis artikel baru</h2>
+        <form class="myform my-4" method="POST" action="{% url 'blog:create' %}">
+            {% csrf_token %}
+            {{ form }}
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">Create article</button>
+        </form>
+    </div>
+{% endblock %}

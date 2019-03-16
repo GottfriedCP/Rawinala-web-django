@@ -1,8 +1,11 @@
-from django.conf.urls import url
-from . import views
+from django.urls import path
+from blog import views
 
 app_name = 'blog'
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^(?P<year>[0-9]{4})/(?P<slug>[\w\-]+)/$', views.display, name='display'),
+    path('', views.index, name='index'),
+    path('<int:year>/<slug>/', views.view_article, name='article'),
+
+    path('create/', views.create, name='create'),
+    path('<int:year>/<slug>/edit/', views.edit, name='edit'),
 ]

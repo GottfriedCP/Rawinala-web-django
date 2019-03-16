@@ -1,0 +1,8 @@
+form.myform label {
+    display: block;
+    margin-top: 1rem;
+}
+
+.helptext {
+    font-size: .7rem;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header_b %}
+    <link rel="stylesheet" href="{% static 'blog/css/form.css' %}">
+{% endblock %}
+{% block title_b %}Create new newsletter{% endblock %}
+{% block body_b %}
+    <div class="container py-3">
+        <h2>Tulis newsletter baru</h2>
+        <form class="myform my-4" method="POST" action="{% url 'newsletter:create' %}">
+            {% csrf_token %}
+            {{ form }}
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">Publish</button>
+        </form>
+    </div>
+{% endblock %}

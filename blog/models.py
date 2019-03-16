@@ -1,48 +1,38 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse
-from django.contrib.contenttypes.models import ContentType
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils import timezone
+from django.utils.text import slugify
+import uuid
 
 # Create your models here.
-class Tag(models.Model):
-    name = models.CharField(max_length=100)
-    time_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
 class Article(models.Model):
-    title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True)
-    content = RichTextUploadingField()
-    time_created = models.DateTimeField('Created at', auto_now_add=True, editable=False)
-    time_modified = models.DateTimeField('Modified at', auto_now=True, editable=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    tag = models.ManyToManyField('Tag', blank=True)
-    publish_status = models.BooleanField('Publish?', default=True)
-    views = models.IntegerField(default=0, editable=False)
-    uuid = models.CharField(max_length=96, unique=True, null=True, editable=False)
+    """A blog post."""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=1000, unique=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, help_text='Akan diisi oleh sistem bila kosong.')
+    author = models.CharField(max_length=500, default='Rawinala', help_text='Nama penulis, bila kosong "Rawinala".')
+    date_created = models.DateTimeField(default=timezone.now, help_text='YYYY-MM-DD HH:mm:ss')
+    date_modified = models.DateTimeField(auto_now=True, editable=False)
+    view_count = models.IntegerField(default=0)
+    comment_enabled = models.BooleanField('Izinkan komentar?', default=True)
+    published = models.BooleanField('Publikasi sekarang?', default=True)
+    content = models.TextField('Isi artikel:')
+
+    class Meta:
+        ordering = ['-date_created']
 
     def __str__(self):
         return self.title
 
     def save(self):
-        if self.uuid is None:
-            import datetime
-            import hashlib
-            seed = str(datetime.datetime.now()).encode('utf-8')
-            self.uuid = hashlib.sha384(seed).hexdigest()
         if self.slug is None:
-            from django.utils.text import slugify
             self.slug = slugify(self.title)
-        super(Article, self).save()
+        super().save()
 
     def get_absolute_url(self):
-        from django.urls import reverse
-        return reverse('blog:display', kwargs={'year': self.time_created.year, 'slug': self.slug})
+        """Return absolute url for viewing the article."""
+        return reverse('blog:article', args=[str(self.date_created.year), str(self.slug)])
 
-    def get_admin_url(self):
-        content_type = ContentType.objects.get_for_model(self.__class__)
-        return reverse("admin:%s_%s_change" % (content_type.app_label, content_type.model), args=(self.id,))
+    def get_edit_url(self):
+        """Return url for editing the article."""
+        return reverse('blog:edit', args=[str(self.date_created.year), str(self.slug)])

@@ -1,5 +1,11 @@
 from django import forms
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django_summernote.widgets import SummernoteWidget
+from .models import Newsletter
 
-class NewsletterForm(forms.Form):
-    content = forms.CharField(widget=CKEditorUploadingWidget(), label='')
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ['title', 'date_created', 'content', ]
+        widgets = {
+            'content': SummernoteWidget(),
+        }
