@@ -20,6 +20,18 @@ def index(request):
         'arts': arts,
     })
 
+@login_required
+def list_all(request):
+    request.session['current_page'] = 'blog'
+    art_list = Article.objects.all()
+    paginator = Paginator(art_list, 7, orphans=3)
+
+    page = request.GET.get('page')
+    arts = paginator.get_page(page)
+    return render(request, 'blog/list-articles.html', {
+        'arts': arts,
+    })
+
 def view_article(request, year, slug):
     art = get_object_or_404(Article, date_created__year=year, slug=slug)
 

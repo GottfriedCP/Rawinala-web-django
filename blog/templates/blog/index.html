@@ -11,12 +11,13 @@
 
         {% if user.is_authenticated %}
             <a href="{% url 'blog:create' %}" class="btn btn-primary mb-3">Create new article</a>
+            <a href="{% url 'blog:list' %}" class="btn btn-secondary mb-3">List all articles</a>
         {% endif %}
 
         <h1>Artikel terbaru</h1>
         
         {% for art in arts %}
-        <article class="pb-3">
+        <article class="article-list mb-3">
             <div class="article-list-title">
                 <header>
                     <h4><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></h4>

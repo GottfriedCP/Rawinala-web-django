@@ -1,43 +1,47 @@
-{% extends 'base_en.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 {% block header_b %}
     <!-- Sharethis -->
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5ac45ae81243c10013440ce2&product=inline-share-buttons"></script>
 {% endblock %}
-{% block title_b %}Blog{% endblock %}
+{% block title_b %}All Articles{% endblock %}
 {% block body_b %}
+    <style type="text/css" media="screen">
+    table.table img {
+        height: auto;
+        max-width: 128px;
+    }
+    </style>
     <div class="container py-5">
 
         {% if user.is_authenticated %}
             <a href="{% url 'blog:create' %}" class="btn btn-primary mb-3">Create new article</a>
         {% endif %}
 
-        <h1>Latest Articles</h1>
+        <h1>All Articles</h1>
         
-        {% for art in arts %}
-        <article class="article-list mb-3">
-            <div class="article-list-title">
-                <header>
-                    <h4><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></h4>
-                </header>
-            </div>
-            <section class="content-preview">
-                {{ art.content|striptags|truncatechars:500 }}
-            </section>
-            <div class="article-list-detail mb-1">
-                <footer>
-                    <span>
-                        <img src="{% static 'blog/img/icons/person.svg' %}" title="author" alt="author"><small> {{ art.author }}</small>
-                        <img src="{% static 'blog/img/icons/calendar.svg' %}" title="time" alt="time"><small> {{ art.date_created|date:"d M Y, H:i" }}</small>
-                        <img src="{% static 'blog/img/icons/eye.svg' %}" title="views" alt="views"><small> {{ art.view_count }}</small>
-                    </span>
-                </footer>
-            </div>
-        </article>
-        {% empty %}
-        Nothing yet...
-        {% endfor %}
+        <p><small>newest first</small></p>
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Preview</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for art in arts %}
+                <tr>
+                    <td><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></td>
+                    <td>{{ art.date_created|date:'Y M d' }}</td>
+                    <td>{{ art.content|truncatechars_html:80|safe }}</td>
+                </tr>
+                {% empty %}
+                No article yet...
+                {% endfor %}
+            </tbody>
+        </table>
 
         {% if arts %}
         <!-- Pagination -->

@@ -15,10 +15,16 @@ class Subsr(models.Model):
     class Meta:
         ordering = ['-date_joined']
 
+    def __str__(self):
+        return self.email
+
     def get_unsubscribe_path(self):
         return reverse('newsletter:unsubscribe', args=[self.id])
 
 class Newsletter(models.Model):
-    title = models.CharField(max_length=500, blank=True, null=True, default='')
+    title = models.CharField(max_length=500, blank=True, null=True, default='', help_text='Opsional.')
     date_created = models.DateTimeField(default=timezone.now, help_text='Newsletter edition (date), default is now.')
     content = models.TextField()
+
+    def __str__(self):
+        return self.title

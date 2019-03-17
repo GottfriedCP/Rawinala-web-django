@@ -15,7 +15,7 @@ class Article(models.Model):
     date_modified = models.DateTimeField(auto_now=True, editable=False)
     view_count = models.IntegerField(default=0)
     comment_enabled = models.BooleanField('Izinkan komentar?', default=True)
-    published = models.BooleanField('Publikasi sekarang?', default=True)
+    published = models.BooleanField('Publikasi sekarang?', default=True, help_text='Hapus centang untuk menyembunyikan artikel dari website.')
     content = models.TextField('Isi artikel:')
 
     class Meta:
