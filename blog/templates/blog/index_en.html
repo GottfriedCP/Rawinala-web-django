@@ -11,6 +11,7 @@
 
         {% if user.is_authenticated %}
             <a href="{% url 'blog:create' %}" class="btn btn-primary mb-3">Create new article</a>
+            <a href="{% url 'blog:list' %}" class="btn btn-secondary mb-3">List all articles</a>
         {% endif %}
 
         <h1>Latest Articles</h1>
