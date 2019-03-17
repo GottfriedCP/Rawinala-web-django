@@ -15,7 +15,7 @@ section {
 }
 
 article.article-list {
-    border: 0.8rem solid #e0e0e0;
+    border-bottom: .1rem solid #e0e0e0;
 }
 
 .article-preview-body {
