@@ -37,9 +37,13 @@ class DefaultLanguageMiddleware:
             ipstack_apikey = settings.IPSTACK_APIKEY
             ipstack = f'http://api.ipstack.com/{ip}?access_key={ipstack_apikey}'
 
-            r = requests.get(ipstack)
-            country_code = r.json().get('country_code', None)
-            print(f'Detected country code is {country_code}')
+            country_code = None
+            try:
+                r = requests.get(ipstack)
+                country_code = r.json().get('country_code', None)
+                print(f'Detected country code is {country_code}')
+            except:
+                print('ERROR: cannot use requests lib')
             
             if country_code is None or country_code == 'ID':
                 request.session['language'] = 'id'
