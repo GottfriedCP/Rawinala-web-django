@@ -4,14 +4,19 @@ html {
 }
 
 body {
+    padding-top: 3.5rem;
     font-family: 'Roboto', sans-serif;
     /*margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
 section {
-    margin-top: 1vh;
+    margin-top: 3rem;
     padding-top: 2vh;
     padding-bottom: 2vh;
+}
+
+.card {
+    margin-bottom: 1rem;
 }
 
 article.article-list {

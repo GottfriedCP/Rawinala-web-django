@@ -3,6 +3,10 @@ form.myform label {
     margin-top: 1rem;
 }
 
+form.myform textarea {
+    width: 83vw;
+}
+
 .helptext {
     font-size: .7rem;
 }

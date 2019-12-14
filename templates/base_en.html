@@ -28,7 +28,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color:#ffff;">
         <a class="navbar-brand" href="/">
             <img src="{% static 'img/logo.png' %}" width="32" height="32" alt="">
         </a>
@@ -58,29 +58,21 @@
                     </div>
                 </li>
             </ul>
+            <form class="form-inline mr-3" method="POST" action="{% url 'home:set_language' %}">
+                {% csrf_token %}
+                <input name="redirect_to" type="hidden" value="{{ request.get_full_path }}">
+                <div class="form-group">
+                    <label for="languageSelect" class="sr-only pr-2">Language</label>
+                    <select name="language" class="form-control form-control-sm" onchange="this.form.submit()" id="languageSelect" style="border:none;background-color:rgba(255,255,255,0)">
+                        <option value="id" {% if request.session.language == 'id' %}selected{% endif %}>Bahasa Indonesia</option>
+                        <option value="en" {% if request.session.language == 'en' %}selected{% endif %}>English</option>
+                    </select>
+                </div>
+            </form>
             <!-- Right-side nav -->
-            <ul class="nav justify-content-end">
+            <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <form class="form-inline mr-3" method="POST" action="{% url 'home:set_language' %}">
-                        {% csrf_token %}
-                        <input name="redirect_to" type="hidden" value="{{ request.get_full_path }}">
-                        <div class="form-group">
-                            <label for="languageSelect" class="pr-2" style="color:rgba(255,255,255,.5);">Language</label>
-                            <select name="language" class="form-control form-control-sm" onchange="this.form.submit()" id="languageSelect">
-                                <option value="id" {% if request.session.language == 'id' %}selected{% endif %}>ID</option>
-                                <option value="en" {% if request.session.language == 'en' %}selected{% endif %}>EN</option>
-                            </select>
-                        </div>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    {% if not user.is_authenticated %}
-                    <a role="button" href="{% url 'home:login' %}" class="btn btn-outline-light btn-sm">Login</a>
-                    {% else  %}
-                    <a href="{% url 'newsletter:create' %}" class="badge badge-info mr-3" title="Create a newsletter"><img src="{% static 'newsletter/img/icons/document.svg' %}"></a>
-                    <a role="button" href="{% url 'admin:index' %}" class="btn btn-outline-light btn-sm mr-3">Administration</a>
-                    <a role="button" href="{% url 'home:logout' %}" class="btn btn-outline-light btn-sm">Logout</a>
-                    {% endif %}
+                    <a href="{% url 'home:admin-menu' %}">Admin</a>
                 </li>
             </ul>
         </div>
@@ -105,7 +97,7 @@
                             </address>
                             <address>
                                 <strong>Contact</strong>
-                                <br> Email: office[at]rawinala.org
+                                <br> Email: contact[at]rawinala.org
                                 <br> Phone: (62-21) 8090407 / 80886248
                                 <br> Fax: (62-21) 80886248
                                 <br>
@@ -120,6 +112,9 @@
                                     </a>
                                     <a href="https://www.youtube.com/user/rawinala?feature=watch">
                                         <img src="{% static 'img/icons/y.png' %}" alt="youtube link" width="24px" height="24px">
+                                    </a>
+                                    <a href="https://www.linkedin.com/company/rawinala/">
+                                        <img src="{% static 'img/icons/l.png' %}" alt="linkedin link" width="24px" height="24px">
                                     </a>
                                 </p>
                             </div>
@@ -142,6 +137,9 @@
                                 </a>
                                 <br>
                             </address>
+                            <strong>Visitor Statistics</strong>
+                            <br>
+                            <a href="https://info.flagcounter.com/onmn"><img src="https://s01.flagcounter.com/count/onmn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_1/maxflags_5/viewers_3/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +154,10 @@
         <div class="container p-3 text-center">
             <small>&COPY; 2017 Yayasan Pendidikan Dwituna Rawinala
                 <br>Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
-                <br>Icons courtesy of <a href="http://vervex.ca/">vervex.ca</a> | <a href="https://github.com/GottfriedCP/Rawinala-web-django">source code</a> by <a href="https://www.linkedin.com/in/gprasetyadi/">GP</a></small>
+                <br>Icons courtesy of <a href="http://vervex.ca/">vervex.ca</a>
+                <br><img id="dewaweb-sponsor" src="https://www.dewaweb.com/app/views/MediaKit/2018.05.03.1/assets/img/monochrome-square-logo-dewaweb-partner-preview.png">
+                <br>Powered by <a href="https://www.dewaweb.com" target="_blank">Dewaweb Cloud Hosting</a>
+            </small>
         </div>
     </footer>
     <!-- END Footer -->

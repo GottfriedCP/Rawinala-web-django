@@ -7,6 +7,7 @@ div.newsletter-content {
 div#article-body section.main-content img {
     height: auto;
     max-width: 75vw;
+    width: 640px;
 }
 
 img#newsletter-header {

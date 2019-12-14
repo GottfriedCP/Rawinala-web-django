@@ -16,6 +16,7 @@ class Article(models.Model):
     view_count = models.IntegerField(default=0)
     comment_enabled = models.BooleanField('Izinkan komentar?', default=True)
     published = models.BooleanField('Publikasi sekarang?', default=True, help_text='Hapus centang untuk menyembunyikan artikel dari website.')
+    summary = models.TextField('Ringkasan artikel:')
     content = models.TextField('Isi artikel:')
 
     class Meta:

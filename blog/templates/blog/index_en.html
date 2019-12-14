@@ -23,8 +23,8 @@
                     <h4><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></h4>
                 </header>
             </div>
-            <section class="content-preview">
-                {{ art.content|striptags|truncatechars:500 }}
+            <section class="content-preview" style="margin-top:0;">
+                {{ art.summary }}
             </section>
             <div class="article-list-detail mb-1">
                 <footer>

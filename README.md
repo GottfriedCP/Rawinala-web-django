@@ -2,26 +2,24 @@
 
 ## Description
 
-[Rawinala](https://www.rawinala.org) is one of MDVI (Multiple Disability and Visual Impairment) school recognized throughout Indonesia for helping students with multiple disabilities such as mental retardation, physical and multiple disabilities, visual impairment, development disorder, and hearing impairment.
-
-(on 16 March 2019, the website has undergone major overhaul)
+[Rawinala](https://www.rawinala.org) is one of the few MDVI (Multiple Disability and Visual Impairment) schools in Indonesia. We help students with multiple disabilities such as mental retardation, visual and hearing impairment, and development disorder.
 
 ## Technical details
 
-The website is built using Django Framework and Bootstrap front-end. It has several features, such as:
+The website is built using Django Framework and Bootstrap. It has some features, such as:
+
 - a 'Contact us' form,
 - blog,
 - newsletter subscription,
-- etc.
+- built-in English and Bahasa Indonesia web pages,
+- etc...
 
-It also relies on various third party plugins and libraries, such as summernote, sharethis, etc. The source code is published here on GitHub as reference for others who want to build similar website for social organization.
+It also relies on various third party plugins and libraries, e.g., summernote and sharethis. The source code is published here as reference for people who want to build similar website using Python backend.
 
-## Contributing
+## How to Contribute
 
-Kindly inform us using our [contact form](https://www.rawinala.org/about/#contact-us) or by email. You might also create issues on GitHub.
+Please contact us by filling out our [contact form](https://www.rawinala.org/about/#contact-us) or by email. You may also ask questions or create new issue here.
 
 ## License
 
-The content of the website (which means the static files included with the source code) is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-<img src="https://www.rawinala.org/static/img/logo.png" height="32px">
+The contents of the website (incl. multimedia files) are licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

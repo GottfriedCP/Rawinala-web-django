@@ -174,12 +174,12 @@
             </div>
             {% if recent_arts %}
                 {% for art in recent_arts %}
-                    <div class="container article-preview">
+                    <div class="container article-preview" style="margin-bottom: 2rem;">
                         <a href="{{ art.get_absolute_url }}">
                             <h4>{{art.title}}</h4>
                         </a>
                         <div class="article-preview-body">
-                            <p>{{art.content|striptags|truncatechars:300}}</p>
+                            <p>{{art.summary}}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -195,9 +195,9 @@
             <form method="POST" action="{% url 'newsletter:subscribe' %}" class="form-inline">
                 {% csrf_token %}
                 <label for="email-input" class="sr-only">Email</label>
-                <input type="email" name="email" id="email-input" placeholder="email@example.com" class="form-control mr-2">
+                <input type="email" name="email" id="email-input" placeholder="email@example.com" class="form-control mt-3 mr-3">
 
-                <button type="submit" class="btn btn-primary">Daftar</button>
+                <button type="submit" class="btn btn-primary mt-3">Daftar</button>
             </form>
         </div>
     </section>

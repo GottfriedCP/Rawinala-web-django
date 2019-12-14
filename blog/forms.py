@@ -5,7 +5,7 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'slug', 'author', 'date_created', 'comment_enabled', 'published', 'content', ]
+        fields = ['title', 'slug', 'author', 'date_created', 'comment_enabled', 'published', 'summary', 'content', ]
         widgets = {
             'content': SummernoteWidget(),
         }

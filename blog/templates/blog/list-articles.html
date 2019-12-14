@@ -35,7 +35,7 @@
                 <tr>
                     <td><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></td>
                     <td>{{ art.date_created|date:'Y M d' }}</td>
-                    <td>{{ art.content|truncatechars_html:80|safe }}</td>
+                    <td>{{ art.summary }}</td>
                 </tr>
                 {% empty %}
                 No article yet...

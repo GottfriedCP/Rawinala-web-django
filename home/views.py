@@ -1,3 +1,4 @@
+from decouple import config, Csv
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -6,7 +7,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 from language_setter.language_setter import set_template_language
 from blog.models import Article
-import random
+import random, requests
 
 def home(request):
     request.session['current_page'] = 'home'
@@ -64,6 +65,15 @@ def donation(request, code=None):
 
 def login_view(request):
     if request.method == 'POST':
+        # Check ReCaptcha validity
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data={
+            'secret': config('RECAPTCHA'),
+            'response': request.POST.get('g-recaptcha-response', False),
+        })
+        if not r.json().get('success', False):
+            print('Error: Recaptcha response invalid')
+            return redirect('home:login')
+
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
@@ -82,6 +92,10 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home:home')
+
+@login_required
+def admin_menu(request):
+    return render(request, 'home/admin-menu.html')
 
 def set_language(request):
     if request.method == 'POST':

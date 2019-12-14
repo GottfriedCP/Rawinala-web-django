@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block header_b %}
+    <meta name="robots" content="noindex">
+    <!-- Google ReCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
 {% block title_b %}Login{% endblock %}
+
 {% block body_b %}
     <div class="container pt-5 pb-5">
         <form method="post" action="{% url 'home:login' %}" class="form-center mb-5">
@@ -17,6 +24,8 @@
             <label for="password-input" class="sr-only">Password</label>
             <input type="password" name="password" class="form-control form-control-lg mb-3" id="password-input" placeholder="Password" required>
     
+            <div class="g-recaptcha mt-3" data-sitekey="6LcEm50UAAAAAGvSljbCbykAlLIBD1_1yLBwl_Ya"></div><br>
+
             <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">Login</button>
         </form>
     </div>

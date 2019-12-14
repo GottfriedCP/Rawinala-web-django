@@ -14,6 +14,10 @@ img.country-flag {
     color: #616161 !important;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .letter-spaced {
     letter-spacing: 6px;
 }
@@ -23,6 +27,7 @@ img.country-flag {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 .ribbon {
@@ -36,4 +41,10 @@ img.country-flag {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+img#dewaweb-sponsor {
+    width: 25rem;
+    max-width: 80vw;
+    height: auto;
 }

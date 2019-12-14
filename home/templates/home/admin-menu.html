@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header_b %}
+    <meta name="robots" content="noindex">
+    <!-- Google ReCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
+{% block title_b %}Admin Menu{% endblock %}
+
+{% block body_b %}
+    <div class="container pt-5 pb-5">
+        <ul>
+            <li>
+                <a href="{% url 'blog:create' %}">Tulis artikel baru</a>
+            </li>
+            <li>
+                <a href="{% url 'newsletter:create' %}">Tulis newsletter baru</a>
+            </li>
+            <li>
+                <a href="{% url 'admin:index' %}" target="_blank">Site Admin</a>
+            </li>
+            <li>
+                <a href="https://cpanel.rawinala.org/" target="_blank">Akses Cpanel</a>
+            </li>
+            <li>
+                <a href="{% url 'home:logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

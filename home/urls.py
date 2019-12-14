@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+    path('admin-menu/', views.admin_menu, name='admin-menu'),
 
     path('set-language/', views.set_language, name='set_language'),
 ]
